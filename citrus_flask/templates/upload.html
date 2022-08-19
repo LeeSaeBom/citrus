@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .block{
+            display: block;
+            float: center;
+            text-align: center;
+            
+            border-radius: 10px 10px;
+            
+        }
+        .inline-block{
+            display: inline-block;
+            float: left;
+        }
+    </style>
+   <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <!-- 부가적인 테마 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+</head>
+<body>
+    
+
+    <div class="block mx-auto" style="width: 80%; height:60%;margin-top: 10em;
+    margin-bottom: 10em; margin-left:5em;background-color:#c9a1a1">
+        <div class="block" style="width: 100%; height:20%; background-color:#ebcfcf" >
+            <p style="font-weight: bolder; size: 10em;font-size:xx-large">감귤 질병 분류 결과</p>
+        </div>
+        <div class="block" style=" height: 19em; margin-top:0;margin-bottom:0; padding-left:5em;background-color:#c9a1a1 ">
+            <div class="inline-block" style="width: 30%; height: 20em;background-color:#c9a1a1">
+                <img src="{{ url_for('static', filename=img)}}" width="200em" height="200em"/>
+                <p style="font-weight: bold; size: 10em;font-size:x-large;margin-top:-1%;">Input Image</p>
+            </div>
+            <div class="inline-block" style="width: 30%; height: 19em; margin-top: 2em; background-color:#c9a1a1" >
+                <img src="{{ url_for('static', filename='right-arrow.png')}}" width="100em" height="50em" style="margin-bottom:3%"/>
+                <p style="font-weight: bold; size: 10em;font-size:x-large; ">Predicting Input Image</p>
+            </div>
+            <div class="inline-block" style="width: 39%; height: 21em; background-color:#c9a1a1">
+                <p style="font-weight: bold; size: 10em;font-size:x-large; text-align:left;"><br>예측결과: {{data}}<br>특징</p>
+                {% if data == 'citrus fruit xcc' %}
+                    <div class="block">
+                        <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">반점 형태로 외관을 해치고 심할 경우에는 잎이 뒤틀리며 낙엽이 되며 새순의 경우 순 전체가 죽고 과실은 낙과 될 수 있음<br>
+                            감염 7~10일 후에 첫 병징이 보이기 시작하며 초기 증상은 주위가 황화된 매우 작은 반점(직경 약 0.3 ㎜~0.5 ㎜)으로부터 시작하여 병이 진전되면서 점차 그 크기가 커지고 모양도 원형에서 불규칙한 모양으로 발전
+                            잎의 양면, 특히 잎의 뒷면이 부풀어 오르고 나중에 이 부분이 코르크화 되며 분화구 모양이 됨
+                            발생 초기에 연한 노란색의 기포 같은 것이 표면에 붙어 있는 모양, 시간이 경과하면 점차  진한 갈색의 뚜렷한 병반을 형성
+                        </p>
+                    </div>
+                {% elif data == 'citrus fruit normal' %}
+                    <div class="block">
+                        <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">정상적인 감귤이다.
+                        </p>
+                    </div>
+                {% elif data == 'citrus leaf xcc' %}
+                    <div class="block">
+                        <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">반점 형태로 외관을 해치고 심할 경우에는 잎이 뒤틀리며 낙엽이 되며 새순의 경우 순 전체가 죽고 과실은 낙과 될 수 있음<br>
+                            감염 7~10일 후에 첫 병징이 보이기 시작하며 초기 증상은 주위가 황화된 매우 작은 반점(직경 약 0.3 ㎜~0.5 ㎜)으로부터 시작하여 병이 진전되면서 점차 그 크기가 커지고 모양도 원형에서 불규칙한 모양으로 발전
+                            잎의 양면, 특히 잎의 뒷면이 부풀어 오르고 나중에 이 부분이 코르크화 되며 분화구 모양이 됨
+                            발생 초기에 연한 노란색의 기포 같은 것이 표면에 붙어 있는 모양, 시간이 경과하면 점차  진한 갈색의 뚜렷한 병반을 형성                        
+                        </p>
+                    </div>
+                {% elif data == 'citrus leaf red mite' %}
+                    <div class="block">
+                        <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">알은 구형으로 크기는 0.13 ~ 0.15㎜이며 홍색, 약충은 0.2㎜의 크기로 담홍색이고 3쌍의 다리, 전약충은 0.3㎜전후로 유충과 비슷하지만 다리가 4쌍, 후약충은 체장이 0.3～0.45㎜로 전약충과 거의 비슷
+                            약충과 성충이 잎과 과실에 기생하여 조직 내의 세포액이나 엽록소를 흡수
+                            피해 받은 잎은 잎 표면에 바늘로 찌른 듯한 하얀 반점이 나타남
+                            피해잎은 엽록소가 파괴되어 동화작용이 저하되고 흡즙한 상처부위부터 수분이 증산되어 생리기능이 현저히 떨어짐                           
+                        </p>
+                    </div>
+                {% elif data == 'citrus leaf normal' %}
+                    <div class="block">
+                        <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">정상적인 잎이다.                       
+                        </p>
+                    </div>
+                {% else %}
+                <div class="block">
+                    <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">조팝나무 진딧물과 마찬가지로 역시 주변의 기주식물에서 알로 월동
+                        감귤원 주변에서 월동한 알이 봄에 부화한 후 감귤원에 봄순이 발생하기 시작하면서 유시암컷성충이 감귤원으로 날아와 증식
+                        일반적으로 5월 하순부터 발생하기 시작하여 봄순에서는 5월 하순～6월 상순에 그리고 여름순에서는 7월 하순～8월 상순에 밀도가 가장 높은데, 전반적으로 조팝나무  진딧물보다 발생량이 다소 적으며, 특히 여름순에서의 발생이 더 적음
+                        식물체에 달라붙어서 즙액을 빨아먹고 기생                       
+                    </p>
+                </div>
+
+                {% endif %}
+
+            </div>
+        </div>
+        {% if data == 'citrus fruit xcc' %}
+            <div class="block" style="margin-top:4em; height: 25em; padding-left:2em;background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:x-large; text-align:left;"><br>방제법</p>
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">재배적 방제<br>
+                    바람에 의한 상처를 최소화 하기 위하여 바람이 많은 과수원은 방풍 시설을 해준다.<br>
+                    전정 시 병든 잎 및 가지를 제거하여 전염원의 밀도를 낮춘다.<br>
+                    밀식된 과수원은 간벌을 실시하여 통풍을 원활히 함으로써 수관내 습윤기간을 짧게 해준다.<br>
+                    질소비료의 과다시용을 피하고 여름순과 가을순 발생이 많아지는 강전정은 가급적 피한다.<br>
+                    궤양병 발병이 많은 과수원은 귤굴나방 방제를 철저히 한다.<br>
+                    약제방제<br>
+                    궤양병균은 세균병으로서 주로 항생제와 구리제가 사용되고 있는데 등록약제로 사용기준에 따라 방제하여야 한다.<br>
+                    구리제는 궤양병에 효과 있는 약제이지만 고온기에 살포 시 약해가 발생할 수 있는 단점이 있기 때문에 살포 시 주의해야 한다.<br>
+                    최초 방제는 5월 중순에서 말경이 유리, 발생이 많은 과원은 이후 2주 간격으로 3~4회, 그리고 태풍 내습 전에 약제를 살포
+                </p>
+            </div>
+        {% elif data == 'citrus fruit normal' %}
+            <div class="block" style="margin-top:4em; height: 25em;padding-left:2em; background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; "><br><br>정상이다.</p>
+            </div>
+        {% elif data == 'citrus laef xcc' %}
+            <div class="block" style="margin-top:4em; height: 25em;padding-left:2em; background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; "><br><br>정상이다.</p>
+            </div>
+        {% elif data == 'citrus leaf red mite' %}
+            <div class="block" style="margin-top:4em; height: 25em;padding-left:2em; background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:x-large; text-align:left;"><br>방제법</p>
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">노지 감귤의 경우 귤응애 약제를 사용하지 않는 것이 바람직하며 사용하더라도 봄철에 기계유유제 1회 살포로 당해연도 응애 방제를 완료하는 것이 좋다.
+                    봄철 기계유유제 사용시기는 4월 하순경 더뎅이병 약제와 혼용 살포하거나 5월 중하순경 궤양병 약제와 혼용 살포하면 효율적이다.
+                    귤응애 발생과 초생과의 관계는 아직 잘 연구된 자료가 없으나 초생재배는 귤응애 방제에 유리한 쪽으로 작용하는 것으로 알려져 있다. 감귤원에 초생, 특히 꽃가루가 많은 잡초가 많을 경우 이들은 귤응애 천적인 이리응애에 먹이를 제공해줌으로써 이리응애의 밀도를 유지시켜 귤응애 방제에 도움을 줄 수 있다.
+                    또한 등록약제를 살포하는 경우는 응애 발생 상황에 따라 살포 여부를 판단해야 하는데 잎당 2～3마리, 또는 약 75% 잎에서 응애가 발견되면 약제를 살포한다. 약제의 경우 천적을 유지시키기 위해서 합성피레스로이드와 같은 천적에 고독성인 약제의 사용을 지양하고 IGR계통이나 기계유유제 등 천적에 저독성인 약제를 선택하여 방제하는 것이 바람직하다.
+                    등록약제의 효과를 높이기 위해서는 적기방제가 중요하므로 반드시 예찰을 통해서 잎당 2마리가 넘지 않았을 때 약제를 살포해야 한다.
+                </p>
+            </div>
+        {% elif data == 'citrus laef normal' %}
+            <div class="block" style="margin-top:4em; height: 25em;padding-left:2em; background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; "><br><br>정상이다.</p>
+            </div>
+
+        {% else %}
+            <div class="block" style="margin-top:4em; height: 25em;padding-left:2em; background-color: #f0e6e6; ">
+                <p style="font-weight: bold; size: 10em;font-size:x-large; text-align:left;"><br>방제법</p>
+                <p style="font-weight: bold; size: 10em;font-size:medium; text-align:left; ">천적<br>
+                    진딧물 천적은 매우 많으며, 특히 중요한 포식성 천적으로는 풀잠자리류, 무당벌레류, 꽃등에, 혹파리류 등이 있으며, 기생성 천적으로는 진딧벌 등이 있다.
+                    이들 포식성 천적과 기생성 천적을 방제에 성공적으로 이용하기 위해서는 계절적 요인과 재배적 요인, 신초의 생장 패턴 등과 연관이 있다.
+                    외국에서는 풀잠자리류, 무당벌레류를 대량증식 하여 판매도 한다.<br>
+                    방제 포인트<br>
+                    가급적 밀도가 낮아서 신초당 10～30마리 이내일 때에는 더 기다렸다가 적과 등 작업 개시 전에 급격히 발생하는 5월 중순～6월 하순에 방제한다.
+                    무더운 7월 중순부터는 사과원 밖으로 이동 분산하며 방제가 필요 없다.
+                    사과 외에도 배, 감귤, 조팝나무 등에도 많이 가해하므로 가까이에 이들 다발원이 있다면 유시충이 비래하여 다발생할 수 있다.
+                </p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
